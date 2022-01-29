@@ -2,9 +2,6 @@ defmodule LivebookWeb.Helpers do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-
-  alias LivebookWeb.Router.Helpers, as: Routes
-
   alias Livebook.FileSystem
 
   @doc """
@@ -81,7 +78,7 @@ defmodule LivebookWeb.Helpers do
   """
   def live_dashboard_process_path(socket, pid) do
     pid_str = Phoenix.LiveDashboard.PageBuilder.encode_pid(pid)
-    Routes.live_dashboard_path(socket, :page, node(), "processes", info: pid_str)
+    router_helpers_module().live_dashboard_path(socket, :page, node(), "processes", info: pid_str)
   end
 
   @doc """
@@ -375,4 +372,24 @@ defmodule LivebookWeb.Helpers do
 
   def file_system_label(%FileSystem.Local{}), do: "Local disk"
   def file_system_label(%FileSystem.S3{} = fs), do: fs.bucket_url
+
+  @doc """
+  Return the name of the router's helpers module.
+  """
+  @spec router_helpers_module() :: atom()
+  def router_helpers_module() do
+    LivebookWeb.Routes.Helpers
+  end
+
+  @doc """
+  Return the base url for livebook.
+  """
+  @spec base_url_path() :: binary()
+  def base_url_path() do
+    Application.get_env(:livebook, :base_url_path, "/")
+  end
+
+  def asset_url(_conn \\ nil, path) do
+    "https://raw.githubusercontent.com/livebook-dev/livebook/main/static#{path}"
+  end
 end

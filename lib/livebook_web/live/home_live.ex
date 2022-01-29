@@ -43,7 +43,7 @@ defmodule LivebookWeb.HomeLive do
           <div class="flex flex-col space-y-2 items-center pb-4 border-b border-gray-200
                       sm:flex-row sm:space-y-0 sm:justify-between">
             <div class="text-2xl text-gray-800 font-semibold">
-              <img src="/images/logo-with-text.png" class="h-[50px]" alt="Livebook" />
+              <img src={asset_url("/images/logo-with-text.png")} class="h-[50px]" alt="Livebook" />
             </div>
             <div class="flex space-x-2 pt-2">
               <%= live_patch "Import",

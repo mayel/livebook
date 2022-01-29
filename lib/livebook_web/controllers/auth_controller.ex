@@ -29,7 +29,7 @@ defmodule LivebookWeb.AuthController do
 
   defp redirect_home(conn) do
     conn
-    |> redirect(to: "/")
+    |> redirect(to: Routes.home_path(conn, :page))
     |> halt()
   end
 end

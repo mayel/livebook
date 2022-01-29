@@ -1,10 +1,9 @@
 defmodule LivebookWeb.SidebarHelpers do
   use Phoenix.Component
+  use LivebookWeb, :helpers
 
   import LivebookWeb.Helpers
   import LivebookWeb.UserHelpers
-
-  alias LivebookWeb.Router.Helpers, as: Routes
 
   @doc """
   Renders sidebar container.
@@ -24,7 +23,7 @@ defmodule LivebookWeb.SidebarHelpers do
     ~H"""
     <span>
       <%= live_patch to: Routes.home_path(@socket, :page), aria_label: "go to homepage" do %>
-        <img src="/images/logo.png" height="40" width="40" alt="" />
+        <img src={asset_url("/images/logo.png")} height="40" width="40" alt="" />
       <% end %>
     </span>
     """

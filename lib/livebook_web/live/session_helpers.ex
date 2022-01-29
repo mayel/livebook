@@ -1,6 +1,6 @@
 defmodule LivebookWeb.SessionHelpers do
   import Phoenix.LiveView
-  alias LivebookWeb.Router.Helpers, as: Routes
+  use LivebookWeb, :helpers
 
   @doc """
   Creates a new session, redirects on success,

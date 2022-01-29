@@ -4,6 +4,7 @@ end
 
 defmodule LivebookWeb.AuthPlug do
   @moduledoc false
+  use LivebookWeb, :helpers
 
   @behaviour Plug
 
@@ -56,7 +57,7 @@ defmodule LivebookWeb.AuthPlug do
 
   defp authenticate(conn, :password) do
     conn
-    |> redirect(to: "/authenticate")
+    |> redirect(to: Routes.auth_path(conn, :index))#"/authenticate")
     |> halt()
   end
 

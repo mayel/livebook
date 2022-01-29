@@ -1,9 +1,8 @@
 defmodule LivebookWeb.PageHelpers do
   use Phoenix.Component
+  use LivebookWeb, :helpers
 
   import LivebookWeb.Helpers
-
-  alias LivebookWeb.Router.Helpers, as: Routes
 
   @doc """
   Renders page title.
